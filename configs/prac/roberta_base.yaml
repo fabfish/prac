@@ -1,0 +1,30 @@
+# RoBERTa Base 配置
+model_type: "roberta"
+model_name: "roberta-base"
+
+# PRAC 配置
+prac:
+  enabled: true
+  principal_rank: 0.3
+  random_rank: 0.3
+  principal_update_freq: 200
+  random_update_freq: 100
+  share_subspace: true
+
+# 训练配置
+training:
+  batch_size: 32
+  learning_rate: 2e-5
+  num_epochs: 3
+  max_seq_length: 512
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+
+# 支持的任务
+tasks:
+  - sst2
+  - mrpc
+  - qnli
+  - rte
+  - squad
+  - squad_v2

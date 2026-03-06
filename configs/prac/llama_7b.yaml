@@ -1,0 +1,49 @@
+# LLaMA 7B 配置
+model_type: "llama"
+model_name: "meta-llama/Llama-2-7b-hf"
+
+# PRAC 配置
+prac:
+  enabled: true
+  principal_rank: 0.25
+  random_rank: 0.25
+  principal_update_freq: 200
+  random_update_freq: 100
+  share_subspace: true
+
+# LoRA 配置
+lora:
+  enabled: true
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+# 训练配置
+training:
+  batch_size: 4
+  gradient_accumulation_steps: 8
+  learning_rate: 2e-4
+  num_epochs: 3
+  max_seq_length: 2048
+  warmup_ratio: 0.03
+  weight_decay: 0.0
+
+# 量化配置
+quantization:
+  load_in_4bit: true
+  load_in_8bit: false
+
+# 支持的数据集
+datasets:
+  - alpaca
+  - dolly
+  - sharegpt
+  - custom
