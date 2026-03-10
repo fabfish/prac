@@ -1,0 +1,40 @@
+# Llama-3.1-8B-Instruct fine-tuning with PRAC
+# Target: 4x NVIDIA RTX PRO 6000 (96 GB each)
+
+model:
+  name_or_path: /data/models/Llama-3.1-8B-Instruct/
+  torch_dtype: bfloat16
+
+prac:
+  enabled: true
+  principal_rank: 0.25
+  random_rank: 0.25
+  update_freq: 200
+
+lora:
+  enabled: true
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+training:
+  dataset: alpaca
+  batch_size: 4
+  gradient_accumulation_steps: 8
+  learning_rate: 2.0e-4
+  num_epochs: 3
+  max_seq_length: 2048
+  warmup_ratio: 0.03
+  weight_decay: 0.0
+  max_grad_norm: 0.3
+  bf16: true
+  gradient_checkpointing: true
+  seed: 42

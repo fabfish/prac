@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Run / benchmark outputs
+glue_benchmark/
+glue_benchmark_bs128/
+llama8b_benchmark/
+prac_profile/
+prac_profile_bs16/
+output/
+
+# Checkpoints & logs
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+wandb/
+*.log
+
+# IDE & OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Env & secrets
+.env
+.env.local
